@@ -7,8 +7,8 @@
     "webpack": "webpack --config ./build/webpack.config.js",
     "dll": "webpack --config ./build/webpack.dll.config.js",
     "server": "node ./build/server/index.js",
-    "tpl": "webpack --config ./build/webpack.html.config.js",
-    "entry": "node ./build/start.js"
+    "dev": "node ./build/dev-start.js --process.NODE_ENV=development",
+    "build": "node ./build/pro-start.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,10 @@
   "dependencies": {
     "antd": "^3.5.1",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   },
   "theme": "./src/common/style/theme.js",
   "devDependencies": {

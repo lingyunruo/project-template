@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.dev.config');
 
 const cheerio = require('cheerio');
 
@@ -22,9 +22,10 @@ const compiler = webpack(webpackConfig);
 
 compiler.watch({
 	aggregateTimeout: 300,
-	poll: undefined
+	poll: undefined,
+	progress: true,
+	'info-verbosity': 'verbose'
 }, () => {
-	console.log('===');
 	Object.keys(htmlConfig).map((key) => {
 
 		let targetDir = path.join(outputPath, key);
@@ -55,6 +56,7 @@ compiler.watch({
 			// 此处合并通用的模版等
 			mergeTpl($);
 			fs.writeFileSync(path.join(targetDir, path.basename(sourceHtmlPath)), $.html());
+			console.log('compiled.');
 		}
 		catch(e) {
 			if(e) {

@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const manifest = require('../assets/common/javascript/vendor-manifest.json');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 let theme = require('../src/common/style/theme');
 
@@ -12,12 +13,12 @@ let webpackConfig = {
 		'candidate-detail/index': path.join(__dirname, '../src/candidate-detail/entry/index.js')
 	},
 	output: {
-		filename: '[name].js',
+		filename: '[name]_[hash:8].js',
 		path: path.join(__dirname, '../assets'),
 		publicPath: "http://www.lgstatic.com:9000"
 	},
 	devtool: false,
-	watch: true,
+	watch: false,
 	module: {
 		rules: [{
 			test: /\.(jsx|js)$/,
@@ -70,7 +71,8 @@ let webpackConfig = {
 		new webpack.DllReferencePlugin({
 			manifest: manifest
 		}),
-		new webpack.optimize.ModuleConcatenationPlugin()
+		new webpack.optimize.ModuleConcatenationPlugin(),
+		new UglifyJsPlugin()
 	]
 };
 

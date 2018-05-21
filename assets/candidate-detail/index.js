@@ -57,10 +57,10 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://www.lgstatic.com:9000";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 117);
+/******/ 	return __webpack_require__(__webpack_require__.s = 64);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -68,7 +68,7 @@
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(1))(5);
+module.exports = (__webpack_require__(1))(3);
 
 /***/ }),
 
@@ -79,7 +79,14 @@ module.exports = vendor_library;
 
 /***/ }),
 
-/***/ 117:
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(1))(25);
+
+/***/ }),
+
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89,11 +96,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(2);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _container = __webpack_require__(118);
+var _container = __webpack_require__(65);
 
 var _container2 = _interopRequireDefault(_container);
 
@@ -103,7 +110,7 @@ _reactDom2.default.render(_react2.default.createElement(_container2.default, nul
 
 /***/ }),
 
-/***/ 118:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -119,9 +126,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(119);
+__webpack_require__(66);
 
-var _BaseComponent2 = __webpack_require__(35);
+var _BaseComponent2 = __webpack_require__(8);
 
 var _BaseComponent3 = _interopRequireDefault(_BaseComponent2);
 
@@ -156,21 +163,14 @@ exports.default = CandidateDetail;
 
 /***/ }),
 
-/***/ 119:
+/***/ 66:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 14:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(16);
-
-/***/ }),
-
-/***/ 35:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

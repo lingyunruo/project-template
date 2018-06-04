@@ -1,6 +1,14 @@
+/*
+*
+* 配置模拟接口数据，不区分get和post方式
+*
+* */
 module.exports = {
-	'/getuser': {
-		name: 'll',
-		age: '99'
+	'/api/onlinehunting/isHuntingGray.json': {
+		content: {
+			data: {
+				isGray: false
+			}
+		}
 	}
 };

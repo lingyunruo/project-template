@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --config ./build/webpack.config.js",
     "dll": "webpack --config ./build/webpack.dll.config.js",
     "server": "node ./build/server/index.js",
-    "dev": "node ./build/dev-start.js --process.NODE_ENV=development",
-    "build": "node ./build/pro-start.js"
+    "dev": "NODE_ENV=development node ./build/start.js",
+    "build": "NODE_ENV=prod node ./build/start.js",
+    "lint": "eslint ./src"
   },
   "repository": {
     "type": "git",
@@ -18,24 +18,33 @@
   "license": "ISC",
   "dependencies": {
     "antd": "^3.5.1",
+    "classnames": "^2.2.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "whatwg-fetch": "^2.0.4"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "theme": "./src/common/style/theme.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-import": "^1.7.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "cheerio": "^1.0.0-rc.2",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
     "html-webpack-plugin": "^3.2.0",
@@ -46,6 +55,7 @@
     "loader-utils": "^1.1.0",
     "mime": "^2.3.1",
     "postcss-loader": "^2.1.5",
+    "pre-commit": "^1.2.2",
     "style-loader": "^0.21.0",
     "through2": "^2.0.3",
     "uglifyjs-webpack-plugin": "^1.2.5",

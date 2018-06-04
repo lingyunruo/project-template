@@ -9,8 +9,7 @@ let theme = require('../src/common/style/theme');
 
 let webpackConfig = {
 	entry: {
-		'candidate-list/index': path.join(__dirname, '../src/candidate-list/entry/index.js'),
-		'candidate-detail/index': path.join(__dirname, '../src/candidate-detail/entry/index.js')
+		'candidate-list/index': path.join(__dirname, '../src/candidate-list/entry/index.js')
 	},
 	output: {
 		filename: '[name]_[hash:8].js',
@@ -31,7 +30,9 @@ let webpackConfig = {
 						['import', {
 							"libraryName": "antd",
 							"style": true
-						}]
+						}],
+						'transform-object-rest-spread',
+						'transform-class-properties'
 					]
 				}
 			}
@@ -60,8 +61,11 @@ let webpackConfig = {
 			use: [{
 				loader: "url-loader",
 				options: {
-					limit: 1024,
-					fallback: 'file-loader'
+					limit: 5120,
+					fallback: 'file-loader',
+					name: '[path][name].[ext]',
+					context: 'src/',
+					publicPath: '/'
 				}
 			}]
 		}]

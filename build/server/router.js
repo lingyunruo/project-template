@@ -1,14 +1,13 @@
 
 
-const mockConfig = require('./config');
-
-
 module.exports = (control) => {
 
 	let getList = {};
 	let postList = {};
 	let getAlwaysRun = [];
 	let postAlwaysRun = [];
+	let allList = {};
+	let allAlwaysRun = [];
 
 	let router = {
 		get: (url, callback) => {
@@ -26,6 +25,14 @@ module.exports = (control) => {
 			else {
 				postList[url] = callback;
 			}
+		},
+		all: (url, callback) => {
+			if(url === '*') {
+				allAlwaysRun.push(callback);
+			}
+			else {
+				allList[url] = callback;
+			}
 		}
 	};
 
@@ -33,9 +40,18 @@ module.exports = (control) => {
 
 
 	return async (ctx, next) => {
+
 		let method = ctx.request.method.toUpperCase();
 		let url = ctx.request.url;
 
+		if(allList[url]) {
+			await allList[url](ctx, next);
+		}
+		else if(allAlwaysRun.length > 0) {
+			allAlwaysRun.map((fn) => {
+				fn(ctx, next);
+			});
+		}
 
 		if(method === 'GET') {
 			if(getList[url]) {
@@ -57,7 +73,6 @@ module.exports = (control) => {
 				});
 			}
 		}
-
 	}
 
 };

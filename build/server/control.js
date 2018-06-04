@@ -1,19 +1,16 @@
-
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime');
 const mockConfig = require('./config');
 
 const assetsDir = path.join(__dirname, '../../assets');
-const fileExt = ['.html', '.js', '.css', '.png', '.jpg', '.gif'];
 
 module.exports = (router) => {
 
 
 	router.get('/', async (ctx, next) => {
-
 		try {
-			let fileList = fs.readdirSync(assetsDir)
+			let fileList = fs.readdirSync(assetsDir);
 
 			let aList = fileList.map((url) => {
 				if (url[0] !== '.') {
@@ -22,17 +19,17 @@ module.exports = (router) => {
 			});
 
 			await ctx.render(aList.join(' '));
-			await next();
 		}
 		catch(e) {
 			e && console.error(e);
 		}
-
 	});
 
 
-	router.get('*', async (ctx, next) => {
+	router.all('*', async (ctx, next) => {
+
 		let url = ctx.request.url;
+
 		if(mockConfig[url]) {
 			let type = typeof mockConfig[url];
 
@@ -64,18 +61,8 @@ module.exports = (router) => {
 					await ctx.render(list.join(' '));
 				}
 				else {
-					let extname = path.extname(url);
-
-					if (fileExt.indexOf(extname) >= 0) {
-						let type = mime.getType(extname);
-						let content = fs.readFileSync(path.join(assetsDir, url)).toString();
-
-						ctx.type = type;
-						ctx.body = content;
-
-					}
+					await next();
 				}
-				await next();
 			}
 			catch(e) {
 				e && console.error(e);

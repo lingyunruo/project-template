@@ -6,15 +6,16 @@ const manifest = require('../assets/common/javascript/vendor-manifest.json');
 
 let theme = require('../src/common/style/theme');
 
+const publicPath = '';
+
 let webpackConfig = {
 	entry: {
-		'candidate-list/index': path.join(__dirname, '../src/candidate-list/entry/index.js'),
-		'candidate-detail/index': path.join(__dirname, '../src/candidate-detail/entry/index.js')
+		'candidate-list/index': path.join(__dirname, '../src/candidate-list/entry/index.js')
 	},
 	output: {
 		filename: '[name].js',
 		path: path.join(__dirname, '../assets'),
-		publicPath: ""
+		publicPath: publicPath
 	},
 	devtool: false,
 	module: {
@@ -29,7 +30,9 @@ let webpackConfig = {
 						['import', {
 							"libraryName": "antd",
 							"style": true
-						}]
+						}],
+						'transform-object-rest-spread',
+						'transform-class-properties'
 					]
 				}
 			}
@@ -59,7 +62,10 @@ let webpackConfig = {
 				loader: "url-loader",
 				options: {
 					limit: 1024,
-					fallback: 'file-loader'
+					fallback: 'file-loader',
+					name: '[path][name].[ext]',
+					context: 'src/',
+					publicPath: '/'
 				}
 			}]
 		}]

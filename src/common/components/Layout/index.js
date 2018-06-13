@@ -21,7 +21,6 @@ class Layout extends Component {
 	componentDidMount() {
 		this.props.dispatch(fetchIsHuntingGray())
 			.then(() => {
-
 			});
 
 		this.props.dispatch(initNavList());

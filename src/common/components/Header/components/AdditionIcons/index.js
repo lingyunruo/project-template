@@ -15,7 +15,7 @@ class AdditionIconsBox extends Component {
 	}
 
 	shouldComponentUpdate() {
-
+		return true;
 	}
 
 	handlePrintClick() {

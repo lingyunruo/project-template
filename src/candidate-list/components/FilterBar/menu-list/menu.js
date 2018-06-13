@@ -1,12 +1,12 @@
 
-import renderFallList from './renderFallList';
-import renderImportResume from './renderImportResume';
-import renderMoreList from './renderMoreList';
-import renderMoveList from './renderMoveList';
-import renderSelectList from './renderSelectList';
+import {renderFallList} from './renderFallList';
+import {renderImportResume} from './renderImportResume';
+import {renderMoreList} from './renderMoreList';
+import {renderMoveList} from './renderMoveList';
+import {renderSelectList} from './renderSelectList';
 
 
-export default {
+export {
 	renderFallList,
 	renderImportResume,
 	renderMoreList,

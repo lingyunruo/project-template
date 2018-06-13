@@ -16,7 +16,7 @@ class HeaderNotice extends Component {
 	}
 
 	shouldComponentUpdate() {
-
+		return true;
 	}
 
 	renderPopContent() {

@@ -44,7 +44,7 @@ class Header extends Component {
 	}
 
 	shouldComponentUpdate() {
-
+		return true;
 	}
 
 	getCompanyName() {

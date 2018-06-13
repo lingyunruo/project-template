@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class BaseComponent extends Component {
 
 	shouldComponentUpdate() {
-
+		return true;
 	}
 
 	getUserAvatar({portrait, name, ...othersProps}) {

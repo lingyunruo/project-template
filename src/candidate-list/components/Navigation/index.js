@@ -14,7 +14,7 @@ class Navigation extends Component {
 	}
 
 	shouldComponentUpdate() {
-
+		return true;
 	}
 
 	render() {

@@ -3,15 +3,14 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const manifest = require('../assets/common/javascript/vendor-manifest.json');
+const entryConfig = require('./entry.config');
 
 let theme = require('../src/common/style/theme');
 
 const publicPath = '';
 
 let webpackConfig = {
-	entry: {
-		'candidate-list/index': path.join(__dirname, '../src/candidate-list/entry/index.js')
-	},
+	entry: entryConfig.webpack,
 	output: {
 		filename: '[name].js',
 		path: path.join(__dirname, '../assets'),

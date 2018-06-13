@@ -3,14 +3,13 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const manifest = require('../assets/common/javascript/vendor-manifest.json');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const entryConfig = require('./entry.config');
 
 let theme = require('../src/common/style/theme');
 
 let webpackConfig = {
-	entry: {
-		'candidate-list/index': path.join(__dirname, '../src/candidate-list/entry/index.js')
-	},
+	entry: entryConfig.webpack,
 	output: {
 		filename: '[name]_[hash:8].js',
 		path: path.join(__dirname, '../assets'),
@@ -71,7 +70,7 @@ let webpackConfig = {
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin('[name].css'),
+		new ExtractTextPlugin('[name]_[hash:8].css'),
 		new webpack.DllReferencePlugin({
 			manifest: manifest
 		}),

@@ -4,11 +4,5 @@
 *
 * */
 module.exports = {
-	'/api/onlinehunting/isHuntingGray.json': {
-		content: {
-			data: {
-				isGray: false
-			}
-		}
-	}
+	'/api/onlinehunting/isHuntingGray.json': './src/candidate-list/mock.json'
 };

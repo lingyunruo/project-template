@@ -27,7 +27,7 @@ class FilterBar extends Component {
 	}
 
 	shouldComponentUpdate() {
-
+		return true;
 	}
 
 	render() {
